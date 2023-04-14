@@ -8,13 +8,13 @@ public class App {
         Scanner userInputObject = new Scanner(System.in);
 //        Console console = new Console();
         do {
-            System.out.println("Select process (e-encode/d-decode:");
+            System.out.println("Start here (e-encode/d-decode:");
             String process = userInputObject.nextLine();
 
-            System.out.println("Enter message:");
+            System.out.println("Enter your desired message here:");
             String msg = userInputObject.nextLine();
 
-            System.out.println("Enter key:");
+            System.out.println("Enter the key:");
             int key = userInputObject.nextInt();
 
             System.out.println("Processing...");
