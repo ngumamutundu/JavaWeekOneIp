@@ -2,22 +2,52 @@ package org.nguma;
 
 
     public class Encoding {
-        private static String alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public static String encode (String message, Integer cipherKey) {
 
-        public static String encode(String msg, int key){
-            String output = "";
-            for(char c: msg.toCharArray()){
-                int charPos = alphabets.indexOf(c);
-                if (charPos == -1){
-                    output = output + c;
-                    continue;
+
+
+            final String encodingAlphabets = Alphabets.getEncryptors();
+
+
+
+//ENCODING PART
+
+            String encodedText = "";
+
+            for(int i=0; i<message.length(); i++){
+
+
+
+                Character msgLetter = message.charAt(i);
+
+
+
+                if(Character.isLetter(msgLetter)){
+
+
+
+                    int cipherStart = encodingAlphabets.indexOf(msgLetter) + cipherKey;
+
+
+
+                    if (cipherStart < encodingAlphabets.length() )
+
+                        encodedText += encodingAlphabets.charAt(cipherStart);
+
+                    else
+
+                        encodedText += encodingAlphabets.charAt(cipherStart%encodingAlphabets.length());
+
                 }
-                int tempNewPos = charPos + key;
-                int newPos = tempNewPos > 25 ?  tempNewPos % 26 : tempNewPos;
-                char replacement = alphabets.charAt(newPos);
-                output = output + replacement;
+
+                else
+
+                    encodedText += msgLetter;
+
             }
-            return output;
+
+            return encodedText;
+
         }
     }
 
